@@ -55,22 +55,22 @@ class ButtonSection extends StatelessWidget {
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
           mainAxisCellCount: 0.6,
-          child: Tile(index: 0, onTap: () => print('Tapped tile 0 (1)')),
+          child: MathSymbols(symbol: 'π', onTap: () => print('Tapped π')),
         ),
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
           mainAxisCellCount: 0.6,
-          child: Tile(index: 0, onTap: () => print('Tapped tile 0 (2)')),
+          child: MathSymbols(symbol: 'sin', onTap: () => print('Tapped sin')),
         ),
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
           mainAxisCellCount: 0.6,
-          child: Tile(index: 0, onTap: () => print('Tapped tile 0 (3)')),
+          child: MathSymbols(symbol: 'cos', onTap: () => print('Tapped cos')),
         ),
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
           mainAxisCellCount: 0.6,
-          child: Tile(index: 0, onTap: () => print('Tapped tile 0 (4)')),
+          child: MathSymbols(symbol: 'tan', onTap: () => print('Tapped tan')),
         ),
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
@@ -85,12 +85,12 @@ class ButtonSection extends StatelessWidget {
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
           mainAxisCellCount: 1,
-          child: Tile(index: 0, onTap: () => print('Tapped tile 0 (5)')),
+          child: OperatorSymbols(symbol: '%', onTap: () => print('Tapped %')),
         ),
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
           mainAxisCellCount: 5,
-          child: Tile(index: 0, onTap: () => print('Tapped tall tile 0')),
+          child: Operators(),
         ),
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
@@ -152,10 +152,10 @@ class ButtonSection extends StatelessWidget {
   }
 }
 
-class Tile extends StatelessWidget {
-  final int index;
+class MathSymbols extends StatelessWidget {
+  final String symbol;
   final VoidCallback? onTap;
-  const Tile({super.key, required this.index, this.onTap});
+  const MathSymbols({super.key, required this.symbol, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -178,7 +178,7 @@ class Tile extends StatelessWidget {
             ],
           ),
           child: Text(
-            '$index',
+            '$symbol',
             style: const TextStyle(fontSize: 16, color: Colors.black87),
           ),
         ),
@@ -237,7 +237,7 @@ class TextBtn extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.lightBlue[100],
             borderRadius: BorderRadius.circular(8.0),
             boxShadow: const [
               BoxShadow(
@@ -250,6 +250,81 @@ class TextBtn extends StatelessWidget {
           child: Text(
             '$text',
             style: const TextStyle(fontSize: 24, color: Colors.black87),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Operators extends StatelessWidget {
+  const Operators({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StaggeredGrid.count(
+      crossAxisCount: 1,
+      mainAxisSpacing: MyApp.spacing_size,
+      crossAxisSpacing: MyApp.spacing_size,
+      children: [
+        StaggeredGridTile.count(
+          crossAxisCellCount: 1,
+          mainAxisCellCount: 1,
+          child: OperatorSymbols(symbol: '/', onTap: () => print('/')),
+        ),
+        StaggeredGridTile.count(
+          crossAxisCellCount: 1,
+          mainAxisCellCount: 1,
+          child: OperatorSymbols(symbol: '*', onTap: () => print('*')),
+        ),
+        StaggeredGridTile.count(
+          crossAxisCellCount: 1,
+          mainAxisCellCount: 1,
+          child: OperatorSymbols(symbol: '—', onTap: () => print('—')),
+        ),
+        StaggeredGridTile.count(
+          crossAxisCellCount: 1,
+          mainAxisCellCount: 1,
+          child: OperatorSymbols(symbol: '+', onTap: () => print('+')),
+        ),
+        StaggeredGridTile.count(
+          crossAxisCellCount: 1,
+          mainAxisCellCount: 1,
+          child: OperatorSymbols(symbol: '=', onTap: () => print('=')),
+        ),
+      ],
+    );
+  }
+}
+
+class OperatorSymbols extends StatelessWidget {
+  final String symbol;
+  final VoidCallback? onTap;
+  const OperatorSymbols({super.key, required this.symbol, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8.0),
+        onTap: onTap,
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Colors.lightBlue[100],
+            borderRadius: BorderRadius.circular(8.0),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 2,
+                offset: Offset(0, 1),
+              ),
+            ],
+          ),
+          child: Text(
+            '$symbol',
+            style: const TextStyle(fontSize: 28, color: Colors.black87),
           ),
         ),
       ),
