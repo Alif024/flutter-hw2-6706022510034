@@ -46,7 +46,11 @@ class DisplaySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.red);
+    return Container(
+      alignment: Alignment.centerRight,
+      // padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Text('0', style: TextStyle(fontSize: 48, color: Colors.black87)),
+    );
   }
 }
 
