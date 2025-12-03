@@ -14,7 +14,15 @@ class MyApp extends StatelessWidget {
       title: 'Calculator',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('10034_alif Calculator'),
+          title: const Center(
+            child: Text(
+              'Calculator',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           backgroundColor: Colors.lightBlue,
         ),
         body: Container(
